@@ -106,7 +106,7 @@ Pdef(\mySynthMachine,
 )
 );
 
-Pdef(\mySynthMachine).play
+// Pdef(\mySynthMachine).play
 
 (
 Pdef(\mySampleMachine,
@@ -128,7 +128,7 @@ Pdef(\mySampleMachine,
 )
 );
 
-Pdef(\mySampleMachine).play
+// Pdef(\mySampleMachine).play
 
 
 
