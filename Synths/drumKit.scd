@@ -46,6 +46,6 @@ instruments.do({|instrument|
 )
 
 
-
+// (instrument: \OPEN_HIHAT1).play
 
 
