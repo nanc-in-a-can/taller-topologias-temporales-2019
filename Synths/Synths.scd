@@ -1,7 +1,7 @@
 //Synths
 // necessary server conditions
-s.options.numBuffers = 1024 * 16;
-s.boot;
+// s.options.numBuffers = 1024 * 16;
+// s.boot;
 
 ( // execute here to compile every function and synthdef
 
@@ -14,7 +14,7 @@ var drumKit = path++"/drumKits/IAMM_Kits";
 ~drumKit = SoundFile.collectIntoBuffers(drumKit++"/Kit_1/*",s);
 
 
-(
+
 SynthDef(\wavetable, {
 	|freq=60,  // pitch
 	wave=0, endOffset=2, durOffset=1, // timbre
@@ -30,9 +30,9 @@ SynthDef(\wavetable, {
 
 	Out.ar(out, sig*env);
 }).add;
-);
 
-(
+
+
 ~chooseWaveTable = {|nameOfWave|
 	switch(nameOfWave,
 		\addPartialsOdd01_17, {~waveTables[0].bufnum},
@@ -44,10 +44,10 @@ SynthDef(\wavetable, {
 
 				{0})
 
-}
-);
+};
 
-( // from coï¿¥ï¾¡pt SynthDef library
+
+// from coï¿¥ï¾¡pt SynthDef library
 SynthDef(\samplePlay,
 	{| out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, pos = 0, rel=15 |
 		var sig,env;
@@ -59,8 +59,8 @@ SynthDef(\samplePlay,
 		sig = sig * amp;
 		Out.ar(out,Pan2.ar(sig,pan));
 }).add;
-);
-(
+
+
 ~drum = {|nameOfWave|
 	switch(nameOfWave,
 		\OPEN_HIHAT1, {~drumKit[0].bufnum},
@@ -91,24 +91,21 @@ SynthDef(\samplePlay,
 		\BASS_DRUM2, {~drumKit[25].bufnum},
 				{nil})
 
-}
-);
-);
-// example of how this works:
+};
 
-(
+// example of how this works:
 Pdef(\mySynthMachine,
 	Pbind(
-	\instrument, \wavetable, \wave, ~chooseWaveTable.(\addSine01_07),
-	\freq, Pseq([60,67,48].midicps,inf),
-	\dur, 0.2, \rel, Pkey(\dur)*0.5),
-	\amp,1
-)
+        \instrument, \wavetable, \wave, ~chooseWaveTable.(\addSine01_07),
+        \freq, Pseq([60,67,48].midicps,inf),
+        \dur, 0.2, \rel, Pkey(\dur)*0.5,
+        \amp,1
+    )
 );
 
 // Pdef(\mySynthMachine).play
 
-(
+
 Pdef(\mySampleMachine,
 	Pbind(
 		\dur, 0.1,
@@ -125,9 +122,9 @@ Pdef(\mySampleMachine,
 		\amp, 0.5,
 		\rate, 1
 	)
-)
 );
 
+)
 // Pdef(\mySampleMachine).play
 
 
