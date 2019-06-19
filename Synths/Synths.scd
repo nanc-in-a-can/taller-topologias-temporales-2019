@@ -17,14 +17,14 @@ var drumKit = path++"/drumKits/IAMM_Kits";
 
 SynthDef(\wavetable, {
 	|freq=60,  // pitch
-	wave=0, endOffset=2, durOffset=1, // timbre
+	bufnum=0, endOffset=2, durOffset=1, // timbre
 	att=0.01, rel=0.1, gate=1, // time
 	out=0, amp=0.5| // bus and intensity
 
 	var sig, env, offset, buf;
 
 	offset = Line.kr(0, endOffset, durOffset);
-	buf = wave;
+	buf = bufnum;
 	sig = VOsc3.ar(buf+offset, freq+[0,1],freq+[0.37,1.1],freq+[0.43, -0.29], 0.333333)*amp;
 	env = EnvGen.ar(Env.asr(att, 1, rel, -2),gate, doneAction:2);
 

@@ -1,5 +1,5 @@
 (// compilar este archivo después de Synths/Synths.scd
-var defaultBuf = Prand([\OPEN_HIHAT2, \OPEN_HIHAT1, \CLOSED_HIHAT1, \OPEN_HIHAT2].collect(~drum), inf);
+var defaultBuf = Prand([\OPEN_HIHAT2, \OPEN_HIHAT1, \CLOSED_HIHAT1, \ACOUSTIC_SNARE, \BASS_DRUM2].collect(~drum), inf);
 ~durPlayer = {|durs, buf = (defaultBuf), midi = ([60, 65])|
     Pdef(\durPlayer,
         Pbind(
